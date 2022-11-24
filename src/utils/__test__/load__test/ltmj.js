@@ -14,9 +14,9 @@ export const options = {
       executor: 'ramping-vus',
       startVUs: 0,
       stages: [
-        { duration: '2s', target: 2 },
+        // { duration: '2s', target: 2 },
         // { duration: '50s', target: 50 },
-        // { duration: '300s', target: 10000 },
+        { duration: '300s', target: 25000 },
         // { duration: '1500s', target: 500 },
       ],
       gracefulRampDown: '0s',
@@ -43,10 +43,11 @@ export const options = {
 
 const SLEEP_DURATION = 5;
 
-let baseUrl = "http://127.0.0.1:3002/api/v1"
+// let baseUrl = "http://127.0.0.1:3002/api/v1"
 // let baseUrl = "https://apidev.inquitech.in/api/v1"
 // let baseUrl = "https://apiprod.inquitech.in/api/v1"
-// let baseUrl =     "https://tnstageapi.inquitech.in/api/v1"
+let baseUrl =     "https://kaapi.unisolve.org/api/v1"
+// let baseUrl =     "https://kastageapi.inquitech.in/api/v1"
 // let baseUrl = "http://15.207.254.154:3002/api/v1"//dev
 // let baseUrl = "http://3.109.59.130:3002/api/v1"//prod
 
@@ -64,7 +65,7 @@ export default function () {
     "role": "MENTOR",
     "team_id": 1,
     "date_of_birth": "1989-06-20",
-    "organization_code": "CHIREC1",
+    "organization_code": "29120102601",
     "qualification": "Degree",
     "city": "testingCity",
     "district": "testingDistrict",
@@ -174,21 +175,21 @@ export default function () {
         'is status quizSurvey 200': (r) => r.status === 200
       });
 
-      //quiz_survey
-      params.tags.name = 'quiNeextQuestion';
-      const get_quiz_nxtQsn_response = http.get(baseUrl+'/quiz/1/nextQuestion', params);
-      check(get_quiz_nxtQsn_response, {
-        'is status nxtQsnt 200': (r) => r.status === 200
-      });
-      console.log("get_quiz_nxtQstn_response",get_quiz_nxtQsn_response.json())
-      sleep(SLEEP_DURATION);
-      //quiz_survey
-      params.tags.name = 'quizSubmitResponse';
-      const post_quiz_response = http.post(baseUrl+'/quiz/1/response',bodySubmitResponse, params);
-      check(post_quiz_response, {
-        'is status quizResponse 200': (r) => r.status === 200
-      });
-      console.log("post_quiz_response",post_quiz_response.json())
+      //quiz
+      // params.tags.name = 'quiNeextQuestion';
+      // const get_quiz_nxtQsn_response = http.get(baseUrl+'/quiz/1/nextQuestion', params);
+      // check(get_quiz_nxtQsn_response, {
+      //   'is status nxtQsnt 200': (r) => r.status === 200
+      // });
+      // console.log("get_quiz_nxtQstn_response",get_quiz_nxtQsn_response.json())
+      // sleep(SLEEP_DURATION);
+      // //quiz_
+      // params.tags.name = 'quizSubmitResponse';
+      // const post_quiz_response = http.post(baseUrl+'/quiz/1/response',bodySubmitResponse, params);
+      // check(post_quiz_response, {
+      //   'is status quizResponse 200': (r) => r.status === 200
+      // });
+      // console.log("post_quiz_response",post_quiz_response.json())
 
       // console.log("get_quiz_survey_response",get_quiz_survey_response.json())
       // console.log(getTimeStamp()+" get_quiz_survey_response",get_quiz_survey_response.timings)
