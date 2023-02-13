@@ -4,9 +4,10 @@ import { speeches } from '../configs/speeches.config';
 
 export const challengeResponsesUpdateSchema = Joi.object().keys({
     status: Joi.string().valid(...Object.values(constents.evaluation_status.list)).required().messages({
-        'any.only': speeches.COMMON_STATUS_INVALID,
-        'string.empty': speeches.COMMON_STATUS_REQUIRED
-    })
+        'any.only': speeches.EVALUATOR_STATUS_INVALID,
+        'string.empty': speeches.EVALUATOR_STATUS_REQUIRED
+    }),
+    'rejected_reason': Joi.any()
 });
 export const UpdateAnyFieldSchema = Joi.object().keys({
     status: Joi.string().valid(...Object.values(constents.challenges_flags.list)).messages({
@@ -18,7 +19,9 @@ export const UpdateAnyFieldSchema = Joi.object().keys({
     evaluated_by: Joi.number().min(1),
     evaluated_at: Joi.any(),
     sdg: Joi.any(),
-    others: Joi.any()
+    others: Joi.any(),
+    final_result: Joi.any(),
+    initiated_by: Joi.any()
 });
 export const initiateIdeaSchema = Joi.object().keys({
     sdg: Joi.string().required().messages({
